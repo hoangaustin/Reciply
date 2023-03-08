@@ -11,14 +11,18 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   devServer: {
     port: 8080,
     static: {
       directory: path.join(__dirname, 'dist'),
-      publicPath: '/',
+      publicPath: '/dist',
+    },
+    proxy: {
+      '/api': 'http://localhost:3000'
     },
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
