@@ -18,9 +18,9 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
       publicPath: '/dist',
     },
-    proxy: {
-      '/api': 'http://localhost:3000'
-    },
+    // proxy: {
+    //   '/recipe': 'http://localhost:3000'
+    // },
     hot: true,
     historyApiFallback: true,
   },
