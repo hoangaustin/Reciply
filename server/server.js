@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const cors = require('cors');
 
 const recipeRouter = require('./routes/recipeRouter');
 const PORT = 3000;
@@ -11,9 +12,10 @@ const PORT = 3000;
  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/recipe', (req, res) => {
-  const API_KEY = 'sk-';
+  const API_KEY = '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';
 
   const API_BODY = {
     "model": "text-davinci-003",
@@ -46,12 +48,12 @@ app.get('/recipe', (req, res) => {
 /**
  * handle requests for static files
  */
-if (process.env.NODE_ENV === 'production') {
-  app.use('/dist', express.static(path.join(__dirname, '../dist')));
-  app.get('/', (req, res) => {
-    return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-  })
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use('/dist', express.static(path.join(__dirname, '../dist')));
+//   app.get('/', (req, res) => {
+//     return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+//   })
+// }
 
 
 

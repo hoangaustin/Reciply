@@ -5,7 +5,7 @@ function Ingredients() {
   const [ingredients, setIngredients] = useState('');
   const [recipe, setRecipe] = useState('');
 
-  const API_KEY = 'sk-';
+  const API_KEY = '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';
 
   const API_BODY = {
     "model": "text-davinci-003",
@@ -35,6 +35,18 @@ function Ingredients() {
 
   // console.log('recipe: ', recipe);
 
+  function callBackend() {
+    fetch('http://localhost:3000/recipe', {
+      method: 'GET',
+      mode: 'no-cors',
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('data: ', data)
+        return data;
+      })
+  }
+
   return (
     <div>
       <div>
@@ -45,7 +57,7 @@ function Ingredients() {
           rows="10"
         />
       </div>
-      <button onClick={callOpenAI}>Generate a Recipe!</button>
+      <button onClick={callOpenAI}>Generate Recipe</button>
       <Recipes recipe={recipe} />
     </div>
   )

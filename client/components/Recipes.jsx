@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Ingredients from './ingredients'
 
 function Recipes({ recipe }) {
@@ -13,6 +13,16 @@ function Recipes({ recipe }) {
   the skillet and stir to combine with the vegetables.\n5. Cook until the"
 */
 
+  // const [backendData, setBackendData] = useState('');
+
+  // useEffect(() => {
+  //   fetch('/recipe')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data);
+  //     })
+  // })
+
 
   function redirectToEdit() {
     console.log('Redirecting to edit page!');
@@ -21,7 +31,6 @@ function Recipes({ recipe }) {
 
   function saveToServer() {
     console.log('Saving this recipe to server now!');
-
   }
 
   let start = 'Ingredients:';
@@ -34,11 +43,13 @@ function Recipes({ recipe }) {
     <div>
       <div id="recipe">
         {<p>{name}</p>}
+        {ingredients ? (<p>Ingredients: </p>) : (null)}
         {ingredients.split(/\n/).map((line, index) => <p id={index} key={index}>{line}</p>)}
+        {instructions ? (<p>Instructions:</p>) : (null)}
         {instructions.split(/\n/).map((line, index) => <p id={index} key={index}>{line}</p>)}
       </div>
-      <button onClick={redirectToEdit}>Edit Recipe</button><button onClick={saveToServer}>Save Recipe</button>
-    </div>
+      {name ? (<div><button onClick={redirectToEdit}>Edit Recipe</button><button onClick={saveToServer}>Save Recipe</button></div>) : (null)}
+    </div >
   )
 }
 

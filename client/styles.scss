@@ -1,6 +1,7 @@
 body {
   display: flex;
   justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -10,6 +11,16 @@ h1 {
 button {
   margin-top: 10px;
   margin-right: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0096FF;
+  color: white;
+  font-weight: bold;
+}
+
+button:active {
+  background-color: #0066CC;
 }
 
 #recipe {
